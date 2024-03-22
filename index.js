@@ -4,8 +4,9 @@ const fs=require('fs')
 
 // Routes Layer
 const bookRoute=require('./Routes/bookRoute');
+const defaultRoute=require('./Routes/defaultRoute')
 
-
+/* ....... Porting it on 3000  .... */
 const app=express();
 const port =3000;
 app.listen(port,()=>{
@@ -13,4 +14,6 @@ app.listen(port,()=>{
 })
 
 app.use(express.json());
-app.use('/api/v1/books',bookRoute)
+app.use('/',defaultRoute)
+app.use(bookRoute)
+app.use('/api/v1',bookRoute)
