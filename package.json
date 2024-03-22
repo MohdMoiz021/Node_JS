@@ -1,0 +1,19 @@
+{
+  "name": "put-and-patch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.1",
+    "fs": "^0.0.1-security",
+    "mongoose": "^8.2.3",
+    "morgan": "^1.10.0",
+    "node": "^21.7.1",
+    "router": "^2.0.0-beta.2"
+  }
+}
