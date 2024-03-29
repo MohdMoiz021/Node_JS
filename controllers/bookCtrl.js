@@ -83,6 +83,8 @@ const post=(req,res)=>{
     }
 };
 
+/* ....... Deleting New Books .... */
+
 const remove=(req,res)=>{
     const id=+req.params.id;
 
@@ -96,6 +98,50 @@ const remove=(req,res)=>{
     res.send();
 }
 
+/* ....... Full Update in the Database .... */
+const put=(req,res)=>{
+    const id =+req.params.id;
+    const payload=req.body;
+
+    if(isInvalid(payload)){
+        res.status(400)
+        res.send('Bad request')
+        return;
+    }
+
+    for(let i=0;i<booksDb.length;i++){
+        if(booksDb[i].id===id){
+            booksDb[i].price=payload.price;
+            booksDb[i].name=payload.name;
+            booksDb[i].author=payload.author;
+            booksDb[i].rating=payload.rating;
+        }
+    }
+    res.status(204)
+    res.send();
+}
+
+
+/* ....... Partial Update in a Database .... */
+
+
+const patch=(req,res)=>{
+    const id=+req.params.id;
+    const payload=req.body;
+
+    for(let i=0;i<booksDb.length;i++){
+        if(booksDb[i].id===id){
+            for(let key in payload){
+                booksDb[i][key]=payload[key];
+            }
+        }
+    }
+    res.status(204);
+    res.send('Successfully Updated')
+}
+
+
+
 
 /* ....... Exporting Books to access in the database .... */
 module.exports={
@@ -104,4 +150,6 @@ module.exports={
     authors,
     post,
     remove,
+    put,
+    patch,
     };

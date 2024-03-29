@@ -8,6 +8,7 @@ const fs=require('fs')
 // Routes Layer
 const bookRoute=require('./Routes/bookRoute');
 const defaultRoute=require('./Routes/defaultRoute')
+const productRoute=require('./Routes/productRoute')
 
 /* ....... Porting it on 3000  .... */
 const app=express();
@@ -20,3 +21,5 @@ app.use(express.json());
 app.use('/',defaultRoute)
 app.use(bookRoute)
 app.use('/api/v1',bookRoute)
+app.use(productRoute)
+app.use('./api/v1/products',productRoute)
